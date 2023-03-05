@@ -61,13 +61,19 @@ jobs:
 
           if [ "${count_maven}" -ge "1" ]; then
             echo "Maven Project"
+            mvn -version
+            ./mvnw -version
             ./mvnw -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -f pom.xml -s settings.xml
           elif [ "${count_gradle_groovy}" -ge "1" ]; then
             echo "Gradle Project Groovy"
-            ./gradlew sonarqube
+            gradle -version
+            ./gradlew -version
+            ./gradlew sonar
           elif [ "${count_gradle_kotlin}" -ge "1" ]; then
             echo "Gradle Project Kotlin"
-            ./gradlew sonarqube
+            gradle -version
+            ./gradlew -version
+            ./gradlew sonar
           else
             echo "Projeto não mapeado!"
             exit 1
