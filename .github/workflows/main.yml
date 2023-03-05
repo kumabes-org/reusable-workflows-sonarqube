@@ -59,13 +59,13 @@ jobs:
           count_gradle_groovy=$(find . -type f -name build.gradle 2>/dev/null | wc -l)
           count_gradle_kotlin=$(find . -type f -name build.gradle.kts 2>/dev/null | wc -l)
 
-          if [ "${count_maven}" -gt "1" ]; then
+          if [ "${count_maven}" -ge "1" ]; then
             echo "Maven Project"
             ./mvnw -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -f pom.xml -s settings.xml
-          elif [ "${count_gradle_groovy}" -gt "1" ]; then
+          elif [ "${count_gradle_groovy}" -ge "1" ]; then
             echo "Gradle Project Groovy"
             ./gradlew sonarqube
-          elif [ "${count_gradle_kotlin}" -gt "1" ]; then
+          elif [ "${count_gradle_kotlin}" -ge "1" ]; then
             echo "Gradle Project Kotlin"
             ./gradlew sonarqube
           else
