@@ -68,12 +68,14 @@ jobs:
             echo "Gradle Project Groovy"
             gradle -version
             ./gradlew -version
-            ./gradlew sonar
+            ./gradlew clean build sonar --parallel
+            ls -lRth --color build
           elif [ "${count_gradle_kotlin}" -ge "1" ]; then
             echo "Gradle Project Kotlin"
             gradle -version
             ./gradlew -version
-            ./gradlew sonar
+            ./gradlew clean build sonar --parallel
+            ls -lRth --color build
           else
             echo "Projeto não mapeado!"
             exit 1
