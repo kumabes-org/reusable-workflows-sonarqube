@@ -95,6 +95,9 @@ jobs:
               exit 1
             fi
           elif [[ "${{ inputs.language }}" == "python" ]]; then
+            echo "Python"
+          elif [[ "${{ inputs.language }}" == "nodejs" ]]; then  
+            echo "NodeJS"
           else
             echo "Linguagem ainda não implementada!"
             exit 1
